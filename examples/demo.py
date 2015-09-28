@@ -28,11 +28,11 @@ def pushAPN():
 
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
     message = IGtSingleMessage()
-    
-   # APN旧版推送Demo 
+
+   # APN旧版推送Demo
 #     template = APNTemplate()
 #     template.setPushInfo("", -1,"", "", "", "", "", "")
-    
+
 # APN简单推送
     template = APNTemplate()
     apn = APNPayload();
@@ -45,7 +45,7 @@ def pushAPN():
 #     apn.contentAvailable=1
 #     apn.category="ACTIONABLE"
     template.setApnInfo(apn)
-    
+
 # APN高级推送
 #     template = APNTemplate()
 #     apnpayload = APNPayload()
@@ -54,8 +54,8 @@ def pushAPN():
 #     apnpayload.addCustomMsg("payload", "payload")
 # #     apnpayload.contentAvailable = 1
 # #     apnpayload.category = "ACTIONABLE"
-#         
-#         
+#
+#
 #     alertMsg = DictionaryAlertMsg()
 #     alertMsg.body = 'body'
 #     alertMsg.actionLocKey = 'actionLockey'
@@ -96,7 +96,7 @@ def pushMessageToSingle():
     # template = LinkTemplateDemo()
     template = TransmissionTemplateDemo()
     # template = NotyPopLoadTemplateDemo()
-	
+
     message = IGtSingleMessage()
     message.isOffline = True
     message.offlineExpireTime = 1000 * 3600 * 12
@@ -118,7 +118,7 @@ def pushMessageToSingle():
 def pushMessageToSingleBatch():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
     batch = BatchImpl(APPKEY, push)
-    
+
     # 消息模版：
     # 1.TransmissionTemplate:透传功能模板
     # 2.LinkTemplate:通知打开链接功能模板
@@ -129,7 +129,7 @@ def pushMessageToSingleBatch():
     # template = LinkTemplateDemo()
     # template = TransmissionTemplateDemo()
     # template = NotyPopLoadTemplateDemo()
-    
+
     message = IGtSingleMessage()
     message.isOffline = True
     message.offlineExpireTime = 1000 * 3600 * 12
@@ -152,10 +152,10 @@ def pushMessageToSingleBatch():
 def pushMessageToList():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
 
-    # 消息模版： 
-    # 1.TransmissionTemplate:透传功能模板  
-    # 2.LinkTemplate:通知打开链接功能模板  
-    # 3.NotificationTemplate：通知透传功能模板  
+    # 消息模版：
+    # 1.TransmissionTemplate:透传功能模板
+    # 2.LinkTemplate:通知打开链接功能模板
+    # 3.NotificationTemplate：通知透传功能模板
     # 4.NotyPopLoadTemplate：通知弹框下载功能模板
 
     template = NotificationTemplateDemo()
@@ -174,7 +174,7 @@ def pushMessageToList():
 #     target1.clientId = CID
     target1.alias = Alias
     arr = []
-    
+
     arr.append(target1)
     contentId = push.getContentId(message, 'ToList_任务别名_可为空')
     ret = push.pushMessageToList(contentId, arr)
@@ -184,10 +184,10 @@ def pushMessageToList():
 def pushMessageToApp():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
 
-    # 消息模版： 
-    # 1.TransmissionTemplate:透传功能模板  
-    # 2.LinkTemplate:通知打开链接功能模板  
-    # 3.NotificationTemplate：通知透传功能模板  
+    # 消息模版：
+    # 1.TransmissionTemplate:透传功能模板
+    # 2.LinkTemplate:通知打开链接功能模板
+    # 3.NotificationTemplate：通知透传功能模板
     # 4.NotyPopLoadTemplate：通知弹框下载功能模板
 
     template = NotificationTemplateDemo()
@@ -293,8 +293,8 @@ def TransmissionTemplateDemo():
 # #     alertMsg.titleLocKey = 'TitleLocKey'
 #     apnpayload.alertMsg=alertMsg
 #     template.setApnInfo(apnpayload)
-    
-    
+
+
     return template
 
 # 通知弹框下载模板动作内容
@@ -309,7 +309,7 @@ def NotyPopLoadTemplateDemo():
     template.isRing = True
     template.isVibrate = True
     template.isClearable = True
-	
+
     template.popTitle = u"弹框标题"
     template.popContent = u"弹框内容"
     template.popImage = ""
@@ -331,8 +331,8 @@ def getUserStatus():
 # 任务停止功能
 def stopTask():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
-    print push.stop("OSA-0226_50RYYPFmos9eQEHZrkAf27");	
- 
+    print push.stop("OSA-0226_50RYYPFmos9eQEHZrkAf27");
+
 # 根据ClientID设置标签功能
 def setTag():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
@@ -348,14 +348,14 @@ def getPushResultTest():
 #     print push.queryAppPushDataByDate(APPID, "20150525")
     #返回用户注册结果信息
     print push.queryAppUserDataByDate(APPID,"20150525")
-    
+
 
 # 根据ClientID查询标签
 def getUserTagsTest():
     push = IGeTui(HOST, APPKEY, MASTERSECRET)
     dictz = push.getUserTags(APPID, CID)
     for key in dictz:
-	print key + ":" + dictz[key].decode("utf-8")        
+	print key + ":" + dictz[key].decode("utf-8")
 
     #
     # 服务端支持三个接口推送
@@ -363,8 +363,8 @@ def getUserTagsTest():
     # 2.PushMessageToList接口：支持对多个用户进行推送，建议为50个用户
     # 3.pushMessageToApp接口：对单个应用下的所有用户进行推送，可根据省份，标签，机型过滤推送
     #
-# pushMessageToSingle()
-pushMessageToSingleBatch()
+pushMessageToSingle()
+# pushMessageToSingleBatch()
 # pushMessageToList()
 # pushMessageToApp()
 
