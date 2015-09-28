@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='igetui',
-    version='4.0.2',
+    version='4.0.3',
     author='alphapigger',
     author_email='steven.hl.0901@gmail.com',
     packages=find_packages(),
