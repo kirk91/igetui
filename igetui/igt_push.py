@@ -23,12 +23,13 @@ class IGeTui:
     def __init__(self, host, appKey, masterSecret):
         self.appKey = appKey
         self.masterSecret = masterSecret
-        if host is None or len(host) <= 0:
-            self.hosts = GtConfig.getDefaultDomainUrl()
-        else:
-            self.hosts = list()
-            self.hosts.append(host)
-        self.initOSDomain()
+        # if host is None or len(host) <= 0:
+        #     self.hosts = GtConfig.getDefaultDomainUrl()
+        # else:
+        #     self.hosts = list()
+        #     self.hosts.append(host)
+        # self.initOSDomain()
+        self.host = host
 
     def initOSDomain(self):
 
@@ -37,7 +38,7 @@ class IGeTui:
         if hosts is None or len(hosts) == 0:
             hosts = self.getOSPushDomainUrlList()
             IGeTui.serviceMap[self.appKey] = hosts
-            self.getFastUrl()
+            self.getFastUrl(hosts)
 
     def getOSPushDomainUrlList(self):
         postData = dict()
@@ -67,7 +68,6 @@ class IGeTui:
                 pass
             e = time.time()
             diff = e - s
-            print host, diff
             if mint > diff:
                 mint = diff
                 s_url = host
