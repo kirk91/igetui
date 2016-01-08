@@ -8,4 +8,7 @@ class RequestException(Exception):
     def __str__(self):
         return repr(self.value)
 
+    def getRequestId(self):
+        return self.value
+
 

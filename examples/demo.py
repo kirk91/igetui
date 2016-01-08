@@ -111,8 +111,8 @@ def pushMessageToSingle():
         ret = push.pushMessageToSingle(message, target)
         print ret
     except RequestException, e:
-        requstId = e.getRequestId()
-        ret = push.pushMessageToSingle(message, target, requstId)
+        requestId = e.getRequestId()
+        ret = push.pushMessageToSingle(message, target, requestId)
         print ret
 
 def pushMessageToSingleBatch():
