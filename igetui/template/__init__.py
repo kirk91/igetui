@@ -1,2 +1,10 @@
-__author__ = 'wei'
-__all__=["igt_base_template", "igt_link_template", "igt_notification_template", "igt_transmission_template" ]
+# encoding: utf-8
+
+
+class Base(object):
+
+    def __init__(self):
+        pass
+
+    def get_transparent(self):
+        pass
